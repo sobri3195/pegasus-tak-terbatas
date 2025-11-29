@@ -38,6 +38,11 @@ chat_database.db
 # Uploads
 uploads/
 
+# Backups (created by dr. Sobri's backup feature)
+backups/
+*.backup
+pegasus_backup_*.db
+
 # IDE
 .vscode/
 .idea/
