@@ -123,6 +123,7 @@ Server akan berjalan di `http://127.0.0.1:80`
 
 ## 🚀 Fitur Utama
 
+### Fitur Dasar
 - ✅ **AI Chat Lokal** - Chat dengan AI tanpa koneksi internet
 - ✅ **Eksekusi Command** - Jalankan command terminal langsung dari interface
 - ✅ **Upload File** - Analisis file dan dokumen dengan AI
@@ -130,6 +131,43 @@ Server akan berjalan di `http://127.0.0.1:80`
 - ✅ **Command History** - Simpan dan akses kembali output command
 - ✅ **Markdown Support** - Format rich text untuk response AI
 - ✅ **Multi-Model Support** - Pilih model AI yang berbeda
+
+### 🆕 Fitur Baru v2.0 (by dr. Sobri)
+1. **📤 Export Chat History**
+   - Export chat ke format JSON atau TXT
+   - Lengkap dengan metadata dan timestamp
+   - Mudah di-backup dan share
+
+2. **🔍 Search in Messages**
+   - Cari kata kunci di semua chat
+   - Filter berdasarkan chat tertentu
+   - Hasil pencarian real-time
+
+3. **📊 Statistics Dashboard**
+   - Total chat dan pesan
+   - Penggunaan model AI
+   - Aktivitas harian 7 hari terakhir
+   - Project statistics
+
+4. **💾 Database Backup & Restore**
+   - Backup database otomatis dengan timestamp
+   - List semua backup tersedia
+   - Proteksi data maksimal
+
+5. **📝 Code Templates Library**
+   - Template cybersecurity (nmap, sqlmap, reverse shell, dll)
+   - Template Python dan Web
+   - Custom templates per user
+   - Kategorisasi lengkap
+
+### 🎨 ASCII Art Banner
+- Banner "PEGASUS TAK TERBATAS" custom
+- Tampil saat server startup
+- Kredensial lengkap dr. Sobri
+
+### 📚 Dokumentasi Lengkap
+- `FEATURES.md` - Dokumentasi fitur baru lengkap dengan API
+- `IMAGES_GUIDE.md` - Panduan image management dan hyperlink
 
 ---
 
