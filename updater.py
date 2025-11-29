@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 """
-Drana-Infinity Auto Updater
+Pegasus Tak Terbatas Auto Updater
 ---------------------------
-Designed and maintained by IHA089.
+Designed and maintained by dr. Sobri.
+Author: Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE
 """
 
 import os
 from git import Repo, GitCommandError
 
-def update_drana_infinity(repo_dir: str = "."):
-    print("\n|──(Checking for Drana-Infinity Updates)──|")
+def update_pegasus_tak_terbatas(repo_dir: str = "."):
+    print("\n|──(Checking for Pegasus Tak Terbatas Updates)──|")
 
     if not os.path.exists(os.path.join(repo_dir, ".git")):
         print("This directory is not a Git repository. Skipping update check.")
@@ -38,7 +39,7 @@ def update_drana_infinity(repo_dir: str = "."):
             except GitCommandError:
                 pass  
 
-            print("Drana-Infinity successfully updated!")
+            print("Pegasus Tak Terbatas successfully updated!")
             return True
         else:
             print(" Already up to date. No updates available.")
@@ -53,4 +54,4 @@ def update_drana_infinity(repo_dir: str = "."):
 
 
 if __name__ == "__main__":
-    update_drana_infinity()
+    update_pegasus_tak_terbatas()

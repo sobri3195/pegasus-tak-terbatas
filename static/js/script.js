@@ -168,7 +168,7 @@ function updateUIForMode() {
   newBtn.removeEventListener('click', createNewChatHandler);
   newBtn.removeEventListener('click', () => { newProjectModal.style.display = 'flex'; });
 
-  headerTitle.textContent = 'Drana-Infinity';
+  headerTitle.textContent = 'Pegasus Tak Terbatas';
 
   if (currentPageMode === 'projects') {
       listTitleHeader.textContent = 'Projects';
@@ -872,11 +872,11 @@ function buildTerminalPrompt(command) {
     const line1 = 
         `<span class="t-light">┌──</span>` +
         `<span class="t-white">(</span>` +
-        `<span class="t-bright"><b>IHA089</b></span>` +
+        `<span class="t-bright"><b>dr.Sobri</b></span>` +
         `<span class="t-white">)</span>` +
         `<span class="t-white">-</span>` +
         `<span class="t-white">[</span>` +
-        `<span class="t-bright"><b>Drana-Infinity</b></span>` +
+        `<span class="t-bright"><b>Pegasus Tak Terbatas</b></span>` +
         `<span class="t-white">]</span>\n`;
 
     const line2 = 
