@@ -1,57 +1,87 @@
-# 🧠 Drana-Infinity
+# 🦅 Pegasus Tak Terbatas
 
-**Drana-Infinity** is a locally hosted advanced AI assistant designed and developed by **IHA089**.  
-It’s built specifically for **cybersecurity, ethical hacking, and bug bounty research** — empowering researchers to analyze, automate, and understand **real-world vulnerabilities**.
-
----
-
-## 🌐 Overview
-
-Drana-Infinity runs entirely **offline** and integrates directly with **Ollama** using a custom locally hosted AI model — [**IHA089/drana-infinity-v1**](https://ollama.com/IHA089/drana-infinity-v1).  
-It allows you to chat, execute commands, upload files, and organize research — all within a secure, private environment.
+**Pegasus Tak Terbatas** adalah asisten AI lokal canggih yang dirancang dan dikembangkan oleh **dr. Sobri**.  
+Dibangun khusus untuk **keamanan siber, ethical hacking, dan penelitian bug bounty** — memberdayakan peneliti untuk menganalisis, mengotomatisasi, dan memahami **kerentanan dunia nyata**.
 
 ---
 
-## ⚙️ System Requirements
+## 👨‍⚕️ Tentang Penulis
 
-To ensure smooth performance when running Drana-Infinity and your local AI model, your system should meet the following:
+**Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE**
 
-| Category | Minimum | Recommended |
+Seorang profesional keamanan siber dengan latar belakang medis dan teknologi informasi. Berpengalaman dalam penetration testing, ethical hacking, dan pengembangan tools keamanan.
+
+### 📧 Kontak
+- **Email**: muhammadsobrimaulana31@gmail.com
+- **GitHub**: [github.com/sobri3195](https://github.com/sobri3195)
+- **Website**: [muhammadsobrimaulana.netlify.app](https://muhammadsobrimaulana.netlify.app)
+- **Toko Online**: [Pegasus Shop](https://pegasus-shop.netlify.app)
+
+### 🌐 Media Sosial
+- **YouTube**: [Muhammad Sobri Maulana](https://www.youtube.com/@muhammadsobrimaulana6013)
+- **TikTok**: [@dr.sobri](https://www.tiktok.com/@dr.sobri)
+- **Telegram**: [winlin_exploit](https://t.me/winlin_exploit)
+- **WhatsApp Group**: [Join Group](https://chat.whatsapp.com/B8nwRZOBMo64GjTwdXV8Bl)
+
+### 💰 Dukung Pengembangan
+Jika tools ini bermanfaat, dukung pengembangan lebih lanjut melalui:
+
+- **Lynk**: [lynk.id/muhsobrimaulana](https://lynk.id/muhsobrimaulana)
+- **Trakteer**: [trakteer.id/g9mkave5gauns962u07t](https://trakteer.id/g9mkave5gauns962u07t)
+- **Gumroad**: [maulanasobri.gumroad.com](https://maulanasobri.gumroad.com/)
+- **Karya Karsa**: [karyakarsa.com/muhammadsobrimaulana](https://karyakarsa.com/muhammadsobrimaulana)
+- **Nyawer**: [nyawer.co/MuhammadSobriMaulana](https://nyawer.co/MuhammadSobriMaulana)
+- **Sevalla**: [muhammad-sobri-maulana-kvr6a.sevalla.page](https://muhammad-sobri-maulana-kvr6a.sevalla.page/)
+
+---
+
+## 🌐 Gambaran Umum
+
+Pegasus Tak Terbatas berjalan sepenuhnya **offline** dan terintegrasi langsung dengan **Ollama** menggunakan model AI lokal kustom.  
+Memungkinkan Anda untuk chat, menjalankan perintah, mengunggah file, dan mengatur penelitian — semua dalam lingkungan yang aman dan pribadi.
+
+---
+
+## ⚙️ Persyaratan Sistem
+
+Untuk memastikan performa lancar saat menjalankan Pegasus Tak Terbatas dan model AI lokal Anda, sistem Anda harus memenuhi:
+
+| Kategori | Minimum | Direkomendasikan |
 |-----------|----------|-------------|
-| **CPU** | 8-core processor | 12-core or higher |
-| **RAM** | 16 GB | 32 GB or higher |
-| **GPU (optional)** | NVIDIA GPU with ≥ 8 GB VRAM | RTX 3060 Ti / 4070 or higher |
-| **Storage** | 15 GB free | SSD with 30 GB+ free |
+| **CPU** | Prosesor 8-core | 12-core atau lebih tinggi |
+| **RAM** | 16 GB | 32 GB atau lebih tinggi |
+| **GPU (opsional)** | GPU NVIDIA dengan ≥ 8 GB VRAM | RTX 3060 Ti / 4070 atau lebih tinggi |
+| **Storage** | 15 GB kosong | SSD dengan 30 GB+ kosong |
 | **OS** | Linux | Kali Linux |
-| **Python** | 3.10+ | Latest 3.x stable version |
+| **Python** | 3.10+ | Versi stabil 3.x terbaru |
 
-> 💡 Works on CPU-only systems (slower responses). GPU recommended for real-time AI streaming.
-
----
-
-## 🧩 Complete Setup Guide
-
-Follow these steps carefully 👇
+> 💡 Bekerja pada sistem CPU-only (respons lebih lambat). GPU direkomendasikan untuk streaming AI real-time.
 
 ---
 
-### 1️⃣ Clone or Prepare the Project Folder
+## 🧩 Panduan Instalasi Lengkap
+
+Ikuti langkah-langkah berikut dengan hati-hati 👇
+
+---
+
+### 1️⃣ Clone atau Persiapkan Folder Proyek
 
 ```bash
-git clone https://github.com/IHA089/drana-infinity.git
-cd drana-infinity
+git clone https://github.com/sobri3195/pegasus-tak-terbatas.git
+cd pegasus-tak-terbatas
 ```
 
-### 2️⃣ Create a Virtual Environment
+### 2️⃣ Buat Virtual Environment
 
 ```bash
 python3 -m venv venv
 
-# Activate the environment
+# Aktifkan environment
 source venv/bin/activate
 ```
 
-### 3️⃣ Install All Dependencies
+### 3️⃣ Install Semua Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -59,45 +89,78 @@ pip install -r requirements.txt
 
 ### 4️⃣ Install Ollama
 
-Download and install Ollama from the official website:
+Download dan install Ollama dari website resmi:
 
-[ollama](https://ollama.com/download)
+[ollama.com/download](https://ollama.com/download)
 
-### 5️⃣ Pull the Custom Model
+### 5️⃣ Pull Model Kustom
 
 ```bash
 ollama run IHA089/drana-infinity-v1
 ```
 
-Verify that it’s available:
+Verifikasi bahwa model tersedia:
 
 ```bash
 ollama list
 ```
 
-### 6️⃣ Start the Ollama Backend
+### 6️⃣ Jalankan Backend Ollama
 
 ```bash
 ollama serve
 ```
 
-### 7️⃣ Run Drana-Infinity Server
+### 7️⃣ Jalankan Server Pegasus Tak Terbatas
 
 ```bash
-python3 drana_infinity.py
+python3 pegasus_tak_terbatas.py
 ```
 
-
-<img width="1920" height="1051" alt="image" src="https://github.com/user-attachments/assets/aec3a6a6-ba11-4923-a4aa-06a8e1b2c80f" />
-
----
-
-<img width="1920" height="1051" alt="image" src="https://github.com/user-attachments/assets/6f61ca41-96a6-4841-a467-351e1b80ca15" />
-
+Server akan berjalan di `http://127.0.0.1:80`
 
 ---
 
+## 🚀 Fitur Utama
 
-<img width="1920" height="1051" alt="image" src="https://github.com/user-attachments/assets/af36797b-b6a1-4cb4-ba62-41d57682023b" />
+- ✅ **AI Chat Lokal** - Chat dengan AI tanpa koneksi internet
+- ✅ **Eksekusi Command** - Jalankan command terminal langsung dari interface
+- ✅ **Upload File** - Analisis file dan dokumen dengan AI
+- ✅ **Project Management** - Organisir penelitian dalam project
+- ✅ **Command History** - Simpan dan akses kembali output command
+- ✅ **Markdown Support** - Format rich text untuk response AI
+- ✅ **Multi-Model Support** - Pilih model AI yang berbeda
 
+---
 
+## 📝 Catatan Penting
+
+- Tools ini dirancang untuk tujuan **educational dan ethical hacking** saja
+- Selalu dapatkan izin sebelum melakukan testing pada sistem
+- Pengguna bertanggung jawab atas penggunaan tools ini
+- Patuhi hukum dan regulasi yang berlaku di wilayah Anda
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi, issues, dan feature requests sangat diterima!  
+Jangan ragu untuk check [issues page](https://github.com/sobri3195/pegasus-tak-terbatas/issues) jika Anda ingin berkontribusi.
+
+---
+
+## 📄 Lisensi
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+## 🙏 Ucapan Terima Kasih
+
+Terima kasih kepada semua kontributor dan komunitas yang telah mendukung pengembangan Pegasus Tak Terbatas!
+
+---
+
+**Made with ❤️ by dr. Sobri**
+
+**#CyberSecurity #EthicalHacking #BugBounty #PegasusTakTerbatas**

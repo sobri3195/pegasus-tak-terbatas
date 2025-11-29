@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """
-Drana-Infinity
+Pegasus Tak Terbatas
 ---------------------------
-Designed and maintained by IHA089.
+Designed and maintained by dr. Sobri.
+Author: Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE
+GitHub: github.com/sobri3195
+Email: muhammadsobrimaulana31@gmail.com
 """
 
 import warnings
@@ -16,16 +19,16 @@ from flask import Flask, request, jsonify, render_template, Response, stream_wit
 from werkzeug.utils import secure_filename 
 
 try:
-    from updater import update_drana_infinity
-    update_drana_infinity()
+    from updater import update_pegasus_tak_terbatas
+    update_pegasus_tak_terbatas()
 except Exception as e:
     print(f"[Update Check Failed] {e}")
 
 
-drana_infinity = Flask(__name__)
+pegasus_tak_terbatas = Flask(__name__)
 DB_NAME = 'chat_database.db'
 UPLOAD_FOLDER = 'uploads' 
-drana_infinity.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+pegasus_tak_terbatas.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def init_db():
     os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -154,7 +157,7 @@ def stream_ollama_response(model_name, history, new_message, chat_id):
             conn.commit()
             conn.close()
 
-@drana_infinity.route('/upload_file', methods=['POST'])
+@pegasus_tak_terbatas.route('/upload_file', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
         return jsonify({"success": False, "message": "No file part"}), 400
@@ -170,7 +173,7 @@ def upload_file():
 
     if file:
         filename = secure_filename(file.filename)
-        chat_upload_dir = os.path.join(drana_infinity.config['UPLOAD_FOLDER'], chat_id)
+        chat_upload_dir = os.path.join(pegasus_tak_terbatas.config['UPLOAD_FOLDER'], chat_id)
         os.makedirs(chat_upload_dir, exist_ok=True)
         
         file_path = os.path.join(chat_upload_dir, filename)
@@ -179,13 +182,13 @@ def upload_file():
         web_path = f"/uploads/{chat_id}/{filename}"
         return jsonify({"success": True, "file_path": web_path, "file_name": filename})
 
-@drana_infinity.route('/uploads/<chat_id>/<path:filename>')
+@pegasus_tak_terbatas.route('/uploads/<chat_id>/<path:filename>')
 def uploaded_file(chat_id, filename):
-    chat_upload_dir = os.path.join(drana_infinity.config['UPLOAD_FOLDER'], chat_id)
+    chat_upload_dir = os.path.join(pegasus_tak_terbatas.config['UPLOAD_FOLDER'], chat_id)
     return send_from_directory(chat_upload_dir, filename)
 
 
-@drana_infinity.route('/execute_stream', methods=['POST'])
+@pegasus_tak_terbatas.route('/execute_stream', methods=['POST'])
 def execute_stream():
     command = request.json.get("command")
     chat_id = request.json.get("chat_id")
@@ -234,7 +237,7 @@ def execute_stream():
 
     return Response(stream_with_context(generate_and_save()), mimetype="text/plain")
 
-@drana_infinity.route('/get_command_output', methods=['POST'])
+@pegasus_tak_terbatas.route('/get_command_output', methods=['POST'])
 def get_command_output():
     output_id = request.json.get("output_id")
     if not output_id:
@@ -251,15 +254,15 @@ def get_command_output():
     else:
         return jsonify({"success": False, "message": "Output not found."}), 404
 
-@drana_infinity.route('/')
+@pegasus_tak_terbatas.route('/')
 def index():
     return render_template('index.html', page_mode='chats', active_project_id=None, active_project_title=None)
 
-@drana_infinity.route('/projects')
+@pegasus_tak_terbatas.route('/projects')
 def projects_page():
     return render_template('index.html', page_mode='projects', active_project_id=None, active_project_title=None)
 
-@drana_infinity.route('/project/<project_id>')
+@pegasus_tak_terbatas.route('/project/<project_id>')
 def project_detail_page(project_id):
     user_hash = request.cookies.get('user_hash')
     project_title = "Project" 
@@ -281,7 +284,7 @@ def project_detail_page(project_id):
 
     return render_template('index.html', page_mode='project_detail', active_project_id=project_id, active_project_title=project_title)
 
-@drana_infinity.route('/login', methods=['POST'])
+@pegasus_tak_terbatas.route('/login', methods=['POST'])
 def login():
     username = request.json.get("username")
     if not username:
@@ -304,7 +307,7 @@ def login():
     response.set_cookie('user_hash', user_hash, max_age=60*60*24*365) 
     return response
 
-@drana_infinity.route('/get_user_info', methods=['GET'])
+@pegasus_tak_terbatas.route('/get_user_info', methods=['GET'])
 def get_user_info():
     user_hash = request.cookies.get('user_hash')
     if not user_hash:
@@ -322,7 +325,7 @@ def get_user_info():
         return jsonify({"success": False, "message": "User not found."}), 404
 
 
-@drana_infinity.route('/get_chats', methods=['GET'])
+@pegasus_tak_terbatas.route('/get_chats', methods=['GET'])
 def get_chats():
     user_hash = request.cookies.get('user_hash')
     if not user_hash:
@@ -351,7 +354,7 @@ def get_chats():
     conn.close()
     return jsonify({"success": True, "chats": chat_list})
 
-@drana_infinity.route('/get_chat_messages', methods=['POST'])
+@pegasus_tak_terbatas.route('/get_chat_messages', methods=['POST'])
 def get_chat_messages():
     chat_id = request.json.get("chat_id")
     if not chat_id:
@@ -364,7 +367,7 @@ def get_chat_messages():
     conn.close()
     return jsonify({"success": True, "messages": messages})
 
-@drana_infinity.route('/rename_chat', methods=['POST'])
+@pegasus_tak_terbatas.route('/rename_chat', methods=['POST'])
 def rename_chat():
     chat_id = request.json.get("chat_id")
     new_title = request.json.get("new_title")
@@ -380,7 +383,7 @@ def rename_chat():
     conn.close()
     return jsonify({"success": True})
 
-@drana_infinity.route('/delete_chat', methods=['POST'])
+@pegasus_tak_terbatas.route('/delete_chat', methods=['POST'])
 def delete_chat():
     chat_id = request.json.get("chat_id")
     user_hash = request.cookies.get('user_hash')
@@ -395,7 +398,7 @@ def delete_chat():
     conn.close()
     return jsonify({"success": True})
     
-@drana_infinity.route('/create_new_chat', methods=['POST'])
+@pegasus_tak_terbatas.route('/create_new_chat', methods=['POST'])
 def create_new_chat():
     user_hash = request.cookies.get('user_hash')
     model_name = request.json.get("model_name")
@@ -421,7 +424,7 @@ def create_new_chat():
 
     return jsonify({"success": True, "chat_id": chat_id, "title": default_title, "model_name": model_name})
 
-@drana_infinity.route('/chat_stream', methods=['POST'])
+@pegasus_tak_terbatas.route('/chat_stream', methods=['POST'])
 def chat_stream():
     user_message = request.json.get("message")
     chat_id = request.json.get("chat_id")
@@ -453,7 +456,7 @@ def chat_stream():
     return Response(stream_with_context(stream_ollama_response(model_name, history, user_message, chat_id)),
                     mimetype="text/plain")
 
-@drana_infinity.route('/get_models', methods=['GET'])
+@pegasus_tak_terbatas.route('/get_models', methods=['GET'])
 def get_models():
     ollama_url = "http://localhost:11434/api/tags"
     try:
@@ -463,13 +466,13 @@ def get_models():
         models = []
         for model in models_data.get('models', []):
             model_name = model['name']
-            if "drana" in model_name:
+            if "drana" in model_name or "pegasus" in model_name:
                 models.append(model_name)
         return jsonify({"success": True, "models": models})
     except requests.exceptions.RequestException as e:
         return jsonify({"success": False, "message": f"Error fetching models: {e}"}), 500
 
-@drana_infinity.route('/get_projects', methods=['GET'])
+@pegasus_tak_terbatas.route('/get_projects', methods=['GET'])
 def get_projects():
     user_hash = request.cookies.get('user_hash')
     if not user_hash:
@@ -482,7 +485,7 @@ def get_projects():
     conn.close()
     return jsonify({"success": True, "projects": project_list})
 
-@drana_infinity.route('/create_new_project', methods=['POST'])
+@pegasus_tak_terbatas.route('/create_new_project', methods=['POST'])
 def create_new_project():
     user_hash = request.cookies.get('user_hash')
     project_name = request.json.get("project_name")
@@ -503,7 +506,7 @@ def create_new_project():
 
     return jsonify({"success": True, "project_id": project_id, "title": project_name})
 
-@drana_infinity.route('/rename_project', methods=['POST'])
+@pegasus_tak_terbatas.route('/rename_project', methods=['POST'])
 def rename_project():
     project_id = request.json.get("project_id")
     new_title = request.json.get("new_title")
@@ -519,7 +522,7 @@ def rename_project():
     conn.close()
     return jsonify({"success": True})
 
-@drana_infinity.route('/delete_project', methods=['POST'])
+@pegasus_tak_terbatas.route('/delete_project', methods=['POST'])
 def delete_project():
     project_id = request.json.get("project_id")
     user_hash = request.cookies.get('user_hash')
@@ -540,5 +543,5 @@ if __name__ == '__main__':
     except sqlite3.OperationalError:
         print("Database already initialized.")
     
-    print("Drana-Infinity server is running on ::: http://127.0.0.1:80")
-    serve(drana_infinity, host='127.0.0.1', port=80)
+    print("Pegasus Tak Terbatas server is running on ::: http://127.0.0.1:80")
+    serve(pegasus_tak_terbatas, host='127.0.0.1', port=80)
